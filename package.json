@@ -1,0 +1,14 @@
+{
+  "name": "CRUD_Node_Auth_Usuarios",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/juniorpinhodev/CRUD_Node_Auth_Usuarios.git",
+  "author": "juniorpinhodev <juniorpinhodev@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
