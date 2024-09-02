@@ -6,7 +6,7 @@
   "author": "juniorpinhodev <juniorpinhodev@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node server.js",
+    "start": "node src/server.js",
     "sequelize": "sequelize-cli",
     "db:migrate": "sequelize-cli db:migrate",
     "db:seed": "sequelize-cli db:seed:all",
