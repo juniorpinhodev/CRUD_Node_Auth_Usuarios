@@ -1,9 +1,9 @@
 const { User } = require('../models'); 
-// Middleware para verificar a permissão
+
 const checkPermission = (requiredPermission) => {
   return async (req, res, next) => {
     try {
-      const userId = req.user.id; // Supondo que você armazena o ID do usuário no req.user após a autenticação
+      const userId = req.user.id;
       const user = await User.findByPk(userId);
 
       if (!user) {

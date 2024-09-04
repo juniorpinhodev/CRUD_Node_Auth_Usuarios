@@ -1,21 +1,17 @@
-const http = require('http');
+const express = require('express');
+const app = express();
+const swaggerDocs = require('./swagger');
+const authRoutes = require('./routes/authRoutes');
+const protectedRoutes = require('./routes/index');
 
+app.use(express.json());
+app.use('/auth', authRoutes);
+app.use('/protected', protectedRoutes);
 
-const server = http.createServer((req, res) => {
+swaggerDocs(app);
 
-    if (req.method === 'GET' && req.url === '/fundamentos') {
-        // Define o cabeçalho da resposta
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-
-        res.end('Hello world, fundamentos nodejs aplicado.');
-    } else {
-  
-        res.writeHead(404, { 'Content-Type': 'text/plain' });
-        res.end('Rota não encontrada');
-    }
-});
-
-const PORT = 3000;
-server.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+  console.log(`Swagger Docs disponível em http://localhost:${PORT}/api-docs`);
 });

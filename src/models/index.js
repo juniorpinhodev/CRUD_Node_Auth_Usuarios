@@ -2,7 +2,6 @@ const { Sequelize } = require('sequelize');
 const path = require('path');
 const fs = require('fs');
 
-// Carregar variáveis de ambiente
 require('dotenv').config();
 
 const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
@@ -11,7 +10,6 @@ const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USERNAME
   logging: false,
 });
 
-// Configuração para carregar todos os modelos da pasta models
 const models = {};
 const files = fs.readdirSync(__dirname);
 
@@ -22,7 +20,6 @@ files.forEach((file) => {
   }
 });
 
-// Estabelecer associações entre os modelos se necessário
 Object.keys(models).forEach((modelName) => {
   if (models[modelName].associate) {
     models[modelName].associate(models);
